@@ -58,10 +58,30 @@ function printQuote() {
   if (randomQuote.year) {
     html += `<span class="year">${randomQuote.year}</span>`
   }
+  // additional property
+  if (randomQuote.tags) {
+    html += `<span class="year">${randomQuote.tags}</span>`
+  }
   html += `</p>`;
   document.getElementById('quote-box').innerHTML = html;
+  // selecting body and assigning random color
+  document.body.style.backgroundColor = getRandomColor();
   return html;
 }
+
+/***********
+RANDOM COLOR
+************/ 
+
+function getRandomColor() {
+  return '#' + Math.floor(Math.random()*16777215).toString(16);
+}
+
+/***********
+AUTO REFRESH
+************/ 
+
+setInterval(printQuote, 10000);
 
 /***********
 EVENT LISTENER
